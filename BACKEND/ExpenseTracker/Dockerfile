@@ -1,14 +1,13 @@
-# Step 1: Use a lightweight Java runtime
-FROM eclipse-temurin:17-jdk-jammy
-
-# Step 2: Set working directory inside container
+# Stage 1: Build with Maven
+FROM maven:3.9.3-eclipse-temurin-17 AS build
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Step 3: Copy the built JAR into the container
-COPY target/*.jar app.jar
-
-# Step 4: Expose Spring Boot default port
+# Stage 2: Run JAR
+FROM eclipse-temurin:17-jdk-jammy
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8081
-
-# Step 5: Run the JAR
 ENTRYPOINT ["java", "-jar", "app.jar"]

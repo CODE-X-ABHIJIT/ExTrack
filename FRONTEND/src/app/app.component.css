@@ -1,0 +1,65 @@
+/* Active Navigation Link Styling */
+.nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+}
+
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Link Hover */
+footer a:hover {
+  color: white !important;
+  transform: translateX(5px);
+}
+
+/* Smooth Transitions */
+.nav-link,
+footer a {
+  transition: all 0.3s ease !important;
+}
+
+/* Navbar Toggle Animation */
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+  border-radius: 12px;
+  padding: 0.5rem;
+}
+
+.dropdown-item {
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+/* Social Icons Hover */
+footer .btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Input Focus in Newsletter */
+footer .form-control:focus {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: white;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.15);
+}
+
+footer .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}

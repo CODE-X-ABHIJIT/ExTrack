@@ -1,0 +1,53 @@
+.signup-container {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  min-height: 100vh;
+}
+
+.card {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-control:focus {
+  border-color: #38ef7d;
+  box-shadow: 0 0 0 0.2rem rgba(56, 239, 125, 0.25);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  border: none;
+  transition: transform 0.2s;
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(17, 153, 142, 0.3);
+}
+
+.btn-success:disabled {
+  opacity: 0.6;
+}
+
+.btn-outline-secondary {
+  transition: all 0.3s;
+}
+
+.btn-outline-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-check-input:checked {
+  background-color: #11998e;
+  border-color: #11998e;
+}

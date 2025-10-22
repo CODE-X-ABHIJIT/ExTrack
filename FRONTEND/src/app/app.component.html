@@ -1,0 +1,347 @@
+<!-- Modern Gradient Navbar -->
+<nav
+  class="navbar navbar-expand-lg navbar-dark shadow-lg sticky-top"
+  style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+>
+  <div class="container-fluid px-4">
+    <!-- Brand Logo -->
+    <a
+      class="navbar-brand fw-bold fs-4 d-flex align-items-center gap-2"
+      [routerLink]="isLoggedIn ? '/dashboard' : '/login'"
+      style="letter-spacing: 1px; cursor: pointer"
+    >
+      <div
+        class="bg-white bg-opacity-25 p-2 rounded-3 d-flex align-items-center justify-content-center"
+        style="width: 45px; height: 45px"
+      >
+        <i class="bi bi-wallet2 fs-4"></i>
+      </div>
+      <span class="text-white">Ex<span class="text-warning">Track</span></span>
+    </a>
+
+    <!-- Mobile Toggle Button -->
+    <button
+      class="navbar-toggler border-0 shadow-sm"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      style="background: rgba(255, 255, 255, 0.1)"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto gap-2">
+        <li class="nav-item">
+          <a
+            class="nav-link px-3 py-2 rounded-3 fw-semibold d-flex align-items-center gap-2"
+            routerLink="/dashboard"
+            routerLinkActive="active"
+            style="transition: all 0.3s ease"
+          >
+            <i class="bi bi-graph-up-arrow fs-5"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link px-3 py-2 rounded-3 fw-semibold d-flex align-items-center gap-2"
+            routerLink="/incomes"
+            routerLinkActive="active"
+            style="transition: all 0.3s ease"
+          >
+            <i class="bi bi-arrow-down-circle fs-5"></i>
+            <span>Income</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link px-3 py-2 rounded-3 fw-semibold d-flex align-items-center gap-2"
+            routerLink="/expenses"
+            routerLinkActive="active"
+            style="transition: all 0.3s ease"
+          >
+            <i class="bi bi-arrow-up-circle fs-5"></i>
+            <span>Expenses</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- User Profile Section (Optional) -->
+      <div class="d-flex align-items-center ms-lg-3 mt-3 mt-lg-0 gap-2">
+        <!-- Show this when user is logged in -->
+        <div class="dropdown" *ngIf="isLoggedIn">
+          <button
+            class="btn btn-light btn-sm rounded-pill px-3 d-flex align-items-center gap-2 shadow-sm"
+            type="button"
+            id="userDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <div
+              class="bg-primary rounded-circle d-flex align-items-center justify-content-center"
+              style="width: 32px; height: 32px"
+            >
+              <i class="bi bi-person-fill text-white"></i>
+            </div>
+            <span class="fw-semibold d-none d-lg-inline">{{
+              getUsername()
+            }}</span>
+            <i class="bi bi-chevron-down small"></i>
+          </button>
+          <ul
+            class="dropdown-menu dropdown-menu-end shadow border-0 mt-2"
+            aria-labelledby="userDropdown"
+          >
+            <li class="px-3 py-2 text-muted small">
+              <div>Signed in as</div>
+              <div class="fw-bold">{{ getUsername() }}</div>
+              <div class="text-muted" style="font-size: 0.85rem">
+                {{ getUserEmail() }}
+              </div>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" routerLink="/profile"
+                ><i class="bi bi-person me-2"></i>Profile</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/settings"
+                ><i class="bi bi-gear me-2"></i>Settings</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a
+                class="dropdown-item text-danger"
+                (click)="logout()"
+                style="cursor: pointer"
+              >
+                <i class="bi bi-box-arrow-right me-2"></i>Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Show this when user is NOT logged in -->
+        <div *ngIf="!isLoggedIn" class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm" routerLink="/login">
+            <i class="bi bi-box-arrow-in-right me-1"></i>Login
+          </button>
+          <button class="btn btn-primary btn-sm" routerLink="/signup">
+            <i class="bi bi-person-plus me-1"></i>Sign Up
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main style="min-height: calc(100vh - 200px)">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Modern Footer -->
+<footer
+  class="mt-auto py-4"
+  style="background: linear-gradient(135deg, #1f2937 0%, #111827 100%)"
+>
+  <div class="container">
+    <div class="row g-4">
+      <!-- Brand & Description -->
+      <div class="col-lg-4 col-md-6">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <div class="bg-primary bg-opacity-25 p-2 rounded-3">
+            <i class="bi bi-wallet2 fs-4 text-primary"></i>
+          </div>
+          <h5 class="text-white fw-bold mb-0">ExTrack</h5>
+        </div>
+        <p class="text-white-50 mb-3">
+          Your personal finance management solution. Track income, expenses, and
+          manage your budget effectively.
+        </p>
+        <div class="d-flex gap-2">
+          <a
+            href="#"
+            class="btn btn-sm btn-outline-light rounded-circle"
+            style="
+              width: 36px;
+              height: 36px;
+              padding: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <i class="bi bi-facebook"></i>
+          </a>
+          <a
+            href="#"
+            class="btn btn-sm btn-outline-light rounded-circle"
+            style="
+              width: 36px;
+              height: 36px;
+              padding: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <i class="bi bi-twitter"></i>
+          </a>
+          <a
+            href="#"
+            class="btn btn-sm btn-outline-light rounded-circle"
+            style="
+              width: 36px;
+              height: 36px;
+              padding: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a
+            href="#"
+            class="btn btn-sm btn-outline-light rounded-circle"
+            style="
+              width: 36px;
+              height: 36px;
+              padding: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <i class="bi bi-github"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-md-6">
+        <h6 class="text-white fw-bold mb-3 text-uppercase small">
+          Quick Links
+        </h6>
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <a
+              routerLink="/dashboard"
+              class="text-white-50 text-decoration-none d-flex align-items-center gap-2"
+              style="transition: color 0.3s"
+            >
+              <i class="bi bi-chevron-right small"></i>Dashboard
+            </a>
+          </li>
+          <li class="mb-2">
+            <a
+              routerLink="/incomes"
+              class="text-white-50 text-decoration-none d-flex align-items-center gap-2"
+              style="transition: color 0.3s"
+            >
+              <i class="bi bi-chevron-right small"></i>Income
+            </a>
+          </li>
+          <li class="mb-2">
+            <a
+              routerLink="/expenses"
+              class="text-white-50 text-decoration-none d-flex align-items-center gap-2"
+              style="transition: color 0.3s"
+            >
+              <i class="bi bi-chevron-right small"></i>Expenses
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="text-white fw-bold mb-3 text-uppercase small">Support</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <a
+              href="#"
+              class="text-white-50 text-decoration-none d-flex align-items-center gap-2"
+              style="transition: color 0.3s"
+            >
+              <i class="bi bi-chevron-right small"></i>Help Center
+            </a>
+          </li>
+          <li class="mb-2">
+            <a
+              href="#"
+              class="text-white-50 text-decoration-none d-flex align-items-center gap-2"
+              style="transition: color 0.3s"
+            >
+              <i class="bi bi-chevron-right small"></i>Contact Us
+            </a>
+          </li>
+          <li class="mb-2">
+            <a
+              href="#"
+              class="text-white-50 text-decoration-none d-flex align-items-center gap-2"
+              style="transition: color 0.3s"
+            >
+              <i class="bi bi-chevron-right small"></i>Privacy Policy
+            </a>
+          </li>
+          <li class="mb-2">
+            <a
+              href="#"
+              class="text-white-50 text-decoration-none d-flex align-items-center gap-2"
+              style="transition: color 0.3s"
+            >
+              <i class="bi bi-chevron-right small"></i>Terms of Service
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="text-white fw-bold mb-3 text-uppercase small">
+          Stay Updated
+        </h6>
+        <p class="text-white-50 small mb-3">
+          Subscribe to our newsletter for tips and updates.
+        </p>
+        <div class="input-group input-group-sm">
+          <input
+            type="email"
+            class="form-control border-0"
+            placeholder="Your email"
+            style="background: rgba(255, 255, 255, 0.1); color: white"
+          />
+          <button class="btn btn-primary px-3" type="button">
+            <i class="bi bi-send-fill"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-top border-secondary border-opacity-25 mt-4 pt-4">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          <p class="text-white-50 mb-0 small">
+            © 2025 <span class="text-white fw-semibold">ExTrack</span>. All
+            rights reserved.
+          </p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <p class="text-white-50 mb-0 small">
+            Made with <i class="bi bi-heart-fill text-danger"></i> by Abhijit
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

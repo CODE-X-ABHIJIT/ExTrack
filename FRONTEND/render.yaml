@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: expense-tracker-app
+    env: static
+    rootDir: FRONTEND
+    buildCommand: npm run build
+    publishPath: dist/expense-tracker-app

@@ -1,0 +1,120 @@
+<div class="login-container">
+  <div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+      <div class="col-md-5 col-lg-4">
+        
+        <!-- Login Card -->
+        <div class="card border-0 shadow-lg" style="background: rgba(255, 255, 255, 0.95); border-radius: 20px;">
+          
+          <!-- Card Header -->
+          <div class="card-header border-0 bg-transparent text-center pt-5 pb-3">
+            <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                 style="width: 80px; height: 80px;">
+              <i class="bi bi-wallet2 text-primary" style="font-size: 2.5rem;"></i>
+            </div>
+            <h2 class="fw-bold mb-2">Welcome Back!</h2>
+            <p class="text-muted mb-0">Sign in to continue to ExTrack</p>
+          </div>
+
+          <!-- Card Body -->
+          <div class="card-body px-5 pb-5">
+            
+            <!-- Error Alert -->
+            <div *ngIf="error" class="alert alert-danger d-flex align-items-center" role="alert">
+              <i class="bi bi-exclamation-triangle-fill me-2"></i>
+              <div>{{ error }}</div>
+            </div>
+
+            <!-- Login Form -->
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              
+              <!-- Username -->
+              <div class="mb-4">
+                <label class="form-label fw-semibold">
+                  <i class="bi bi-person me-1"></i>Username
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control form-control-lg" 
+                  formControlName="username"
+                  placeholder="Enter your username"
+                  [class.is-invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+                <div class="invalid-feedback">
+                  Username is required
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="mb-4">
+                <label class="form-label fw-semibold">
+                  <i class="bi bi-lock me-1"></i>Password
+                </label>
+                <input 
+                  type="password" 
+                  class="form-control form-control-lg" 
+                  formControlName="password"
+                  placeholder="Enter your password"
+                  [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                <div class="invalid-feedback">
+                  Password is required
+                </div>
+              </div>
+
+              <!-- Remember Me & Forgot Password -->
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="rememberMe">
+                  <label class="form-check-label" for="rememberMe">
+                    Remember me
+                  </label>
+                </div>
+                <a href="#" class="text-primary text-decoration-none small">Forgot Password?</a>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="d-grid mb-4">
+                <button 
+                  type="submit" 
+                  class="btn btn-primary btn-lg" 
+                  [disabled]="loginForm.invalid || loading">
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+                  <i *ngIf="!loading" class="bi bi-box-arrow-in-right me-2"></i>
+                  {{ loading ? 'Signing in...' : 'Sign In' }}
+                </button>
+              </div>
+
+              <!-- Divider -->
+              <div class="text-center mb-4">
+                <span class="text-muted">or</span>
+              </div>
+
+              <!-- Social Login Buttons (Optional) -->
+              <div class="d-grid gap-2 mb-4">
+                <button type="button" class="btn btn-outline-secondary">
+                  <i class="bi bi-google me-2"></i>Continue with Google
+                </button>
+              </div>
+
+              <!-- Sign Up Link -->
+              <div class="text-center">
+                <p class="text-muted mb-0">
+                  Don't have an account? 
+                  <a routerLink="/signup" class="text-primary fw-semibold text-decoration-none">Sign Up</a>
+                </p>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- Footer Text -->
+        <div class="text-center mt-4">
+          <p class="text-white-50 small mb-0">
+            © 2024 ExTrack. All rights reserved.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

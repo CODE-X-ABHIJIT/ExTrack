@@ -1,0 +1,43 @@
+/* Chart wrapper animations */
+.chart-wrapper {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button group active state */
+.btn-group .btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+}
+
+/* Hover effects */
+.btn-group .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth transitions */
+.badge, .btn {
+  transition: all 0.3s ease;
+}
+
+/* Chart container glow effect */
+.chart-wrapper:hover {
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+}
+
+/* Responsive canvas */
+canvas {
+  max-height: 400px;
+}

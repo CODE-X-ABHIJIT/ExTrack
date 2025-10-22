@@ -1,0 +1,61 @@
+/* Smooth transitions */
+.card {
+  transition: all 0.3s ease;
+}
+
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Spinning animation for refresh */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+/* Form control focus */
+.form-control:focus,
+.form-select:focus {
+  border-color: #f5576c;
+  box-shadow: 0 0 0 0.2rem rgba(245, 87, 108, 0.25);
+}
+
+/* Invalid feedback styling */
+.invalid-feedback {
+  display: block;
+  font-size: 0.875rem;
+}
+
+/* Table row hover */
+tbody tr {
+  transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: rgba(245, 87, 108, 0.05);
+  transform: scale(1.01);
+}
+
+/* Sticky header for form */
+@media (min-width: 992px) {
+  .sticky-top {
+    position: sticky;
+    top: 80px;
+  }
+}
+
+/* Mobile card styling */
+@media (max-width: 991px) {
+  .card {
+    border-radius: 12px;
+  }
+}

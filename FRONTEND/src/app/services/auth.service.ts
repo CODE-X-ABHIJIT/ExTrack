@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:8081/api/auth';
+  private baseUrl = 'https://extrack-backend.onrender.com/api/auth';
   private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
 
   constructor(

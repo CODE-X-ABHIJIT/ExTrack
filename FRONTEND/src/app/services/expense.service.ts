@@ -9,7 +9,7 @@ import { Expense, ExpenseDTO } from '../models/expense.model';
 })
 export class ExpenseService {
   // Changed port from 8081 to 8080
-  private baseUrl = 'http://localhost:8081/api/expense';
+  private baseUrl = 'https://extrack-backend.onrender.com/api/expense';
 
   constructor(private http: HttpClient) { 
     console.log('ExpenseService initialized with baseUrl:', this.baseUrl);

@@ -8,7 +8,7 @@ import { Income, IncomeDTO } from '../models/income.model';
   providedIn: 'root'
 })
 export class IncomeService {
-  private baseUrl = 'http://localhost:8081/api/income';
+  private baseUrl = 'https://extrack-backend.onrender.com/api/income';
 
   constructor(private http: HttpClient) {
     console.log('IncomeService initialized with baseUrl:', this.baseUrl);

@@ -9,7 +9,7 @@ import { StatsDTO, GraphDTO } from '../models/stats.model';
 })
 export class StatsService {
   
-  private baseUrl = 'http://localhost:8081/api/stats';
+  private baseUrl = 'https://extrack-backend.onrender.com/api/stats';
 
   constructor(private http: HttpClient) { 
     console.log('StatsService initialized with baseUrl:', this.baseUrl);

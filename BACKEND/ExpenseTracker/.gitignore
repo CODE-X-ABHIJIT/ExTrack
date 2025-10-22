@@ -32,7 +32,9 @@ build/
 ### VS Code ###
 .vscode/
 
-application.properties
+
 
 # Eclipse workspace
 BACKEND/.metadata/
+
+.env
